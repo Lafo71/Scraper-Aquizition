@@ -161,6 +161,14 @@ async ({ids, baseUrl, concurrency, attempts, delays}) => {
 log = logging.getLogger("acquizition")
 
 
+def env(name: str) -> str | None:
+    """Lit une variable d'environnement, même si la valeur a été collée avec son préfixe « NOM= »."""
+    value = os.getenv(name, "").strip().strip('"').strip("'")
+    if value.lower().startswith(name.lower() + "="):
+        value = value.split("=", 1)[1].strip()
+    return value or None
+
+
 # --------------------------------------------------------------------------- API
 
 
@@ -382,7 +390,7 @@ def validate(df: pd.DataFrame, total: int, failed: list[dict]) -> list[dict]:
 
 
 def open_browser(pw):
-    ws = os.getenv("BROWSER_WS")
+    ws = env("BROWSER_WS")
     if ws:
         log.info("Connexion au Scraping Browser Bright Data")
         return pw.chromium.connect_over_cdp(ws, timeout=NAVIGATION_TIMEOUT_MS)
@@ -427,7 +435,7 @@ def main() -> int:
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s",
                         stream=sys.stdout)
     started_at = datetime.now(timezone.utc)
-    database_url = os.getenv("DATABASE_URL")
+    database_url = env("DATABASE_URL")
 
     try:
         dicts, ids, total, records, failed = scrape()
