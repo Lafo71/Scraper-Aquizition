@@ -1,0 +1,15 @@
+# Secrets / infos d'hébergement : ne jamais pousser
+superbase.md
+github.md
+railway.md
+brightdata.md
+bright_data.md
+Message_a_ia.md
+.env
+*.env
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
