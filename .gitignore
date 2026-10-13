@@ -8,6 +8,13 @@ Message_a_ia.md
 .env
 *.env
 
+# Fichiers générés par le scraper
+output/
+acquizition_annonces.csv
+acquizition_annonces.xlsx
+acquizition_raw.json
+erreurs.log
+
 # Python
 __pycache__/
 *.pyc

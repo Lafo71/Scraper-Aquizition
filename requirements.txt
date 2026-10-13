@@ -1,0 +1,6 @@
+playwright>=1.48
+beautifulsoup4>=4.12
+pandas>=2.1
+openpyxl>=3.1
+psycopg2-binary>=2.9
+python-dotenv>=1.0

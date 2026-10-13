@@ -1,0 +1,7 @@
+[build]
+builder = "DOCKERFILE"
+dockerfilePath = "Dockerfile"
+
+[deploy]
+# Tâche cron : le conteneur se lance, scrape, synchronise Supabase puis s'arrête.
+restartPolicyType = "NEVER"
